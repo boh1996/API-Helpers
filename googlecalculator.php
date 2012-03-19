@@ -65,7 +65,4 @@ class Google_Calculator{
 		}
 	}
 }
-
-$Calc = new Google_Calculator();
-var_dump($Calc->Currency("llama","llama","llama"));
 ?>
