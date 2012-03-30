@@ -1,47 +1,61 @@
 <?php
 /**
- * @name		Gravatar API Helper
- * @author		Bo Thomsen
- * @company		Illution
+ * @package		Gravatar API Helper
+ * @author Bo Thomsen <bo@illution.dk>
  * @version 	1.1
- * @url			http://illution.dk
+ * @link 		http://illution.dk
  * @license		MIT License
- * @date		03/12-2011
- */
-/**
- * @tobedone	Make a Helper for reading the data
  */
 class Gravatar{
 	
-	/* Variables */
-	private $Parameters = NULL; //The parameters array
-	private $Profile_Parameters = NULL; //The array storing parameters for profile data requests
+	/**
+	 * This array will contain the parameters for the api
+	 * @access private
+	 * @since 1.0
+	 * @var array
+	 */
+	private $Parameters = NULL;
+
+	/**
+	 * This array will contain the paramters for requesting a profile image
+	 * @var array
+	 * @since 1.0
+	 * @access private
+	 */
+	private $Profile_Parameters = NULL;
 	
-	/* 
-	| The contructor
-	*/
+	/**
+	 * The constructor
+	 * @since 1.0
+	 * @access public
+	 */
 	public function Gravatar(){
 		
 	}
 	
-	/* A function to generate a md5 hash of the Input email
-	|
-	| @param {String}	$Email - The Input Email
-	| @return {String} - A md5 string of the Email
-	*/
+	/**
+	 * This function generates a hash based on the email of the user
+	 * @return string The generated md5 hash
+	 * @param string $Email The email to generate the hash based on
+	 * @access private
+	 * @since 1.0
+	 */
 	private function EmailHash($Email){
 		$Return = trim($Email);
 		$Return = strtolower($Return);
 		return md5($Return);
 	}
 	
-	/* A function to easyli set the Parameters for the Profile API
-	|
-	| @param {String}	$s - Size parameter used in the QR generator
-	| @param {boolean}	$imagetag - Image Tag parameter used in the QR generator
-	| @param {String}	$callback - Callback funtion used in the JSON data API
-	| @param {String}	$type - The return type used in the XML data api properties are 'object' or 'string'
-	*/
+	/**
+	 * This function is used to set the parameters for the API
+	 * @param string   $s        The size paramter can be set like this 256x212 or just 256
+	 * @param boolean   $imagetag This parameter is used if the output is QR, then if this is true,
+	 * the QR is wrapped in image tags
+	 * @param string $callback A JSONP callback for the api
+	 * @param string]   $type     The return type used in the XML data api properties are 'object' or 'string'
+	 * @since 1.0
+	 * @access public
+	 */
 	public function Profile_Parameters($s = NULL,$imagetag = NULL,$callback = NULL,$type = NULL){
 		if(!is_null($s)){
 			$this->Profile_Parameters['s'] = $s;
@@ -82,6 +96,12 @@ class Gravatar{
 	| @param {Array}	$Parameters - The parameters array can be generated with Profile_Parameters function {Optional}
 	| @return {String} or {Object} or {Array}	$Return - The return string or Object
 	*/
+	/**
+	 * [Profile description]
+	 * @param [type] $Email      [description]
+	 * @param string $Format     [description]
+	 * @param [type] $Parameters [description]
+	 */
 	public function Profile($Email = NULL,$Format = 'array',$Parameters = NULL){
 		if(!is_null($Email)){
 			$Hash = self::EmailHash($Email);
@@ -132,20 +152,26 @@ class Gravatar{
 		}
 	}
 	
-	/* A function to generate a profile url
-	|
-	| @param {String}	$Hash - The hashed Email
-	| @return {String}	- Returns the link to the users profile
-	*/
+	/**
+	 * This function returns the url to the user's profile image
+	 * @param string $Hash The generated hash
+	 * @see EmailHash
+	 * @return string
+	 * @since 1.0
+	 * @access private
+	 */
 	private function Profile_Url($Hash){
 		return 'http://www.gravatar.com/'.$Hash;
 	}
 	
-	/* A function get and return a JSON string a parameter [callback] is available to set the javascript callback function
-	|
-	| @param {String}	$Hash - The hashed Email
-	| @return {String} - Returns a JSON data string
-	*/
+
+	/**
+	 * This function returns the api data as json
+	 * @param string $Hash The hash of the user's email
+	 * @return string The json string from the api
+	 * @access private
+	 * @since 1.0
+	 */
 	private function JSON($Hash){
 		$Url = 'http://www.gravatar.com/'.$Hash.'.json';
 		if(!is_null($this->Profile_Parameters)){
@@ -156,19 +182,21 @@ class Gravatar{
 		return $Url;
 	}
 	
-	/* A function to get and return the xml data from Gravatar
-	|
-	| @param {String}	$Hash - The Hashed Email
-	| @return {String} or {Object} - Returns the XML data as string or an SimpleXML object
-	*/
+	/**
+	 * This funtion performs the xml request, to access the users
+	 * information and return id as xml
+	 * @param STRING $Hash The generated hash based on the users email
+	 * @return string|object The return can be as a SimpleXML object of the Profile_Parameter
+	 * type is set as object or if it's set as string a xml string is returned
+	 * @access private
+	 * @since 1.0
+	 */
 	private function XML($Hash){
 		$file = file_get_contents( 'http://www.gravatar.com/'.$Hash.'.xml' );
 		$Type = 'String';
 		if(!is_null($this->Profile_Parameters)){
 			if(array_key_exists('type',$this->Profile_Parameters)){
 				switch($this->Profile_Parameters){
-					
-					//String
 					case "string":
 						$Type = 'String';
 					break;
@@ -193,32 +221,37 @@ class Gravatar{
 		}
 	}
 	 
-	/* A function to return url to the vCard file
-	|
-	| @param {String}	$Hash - The Hashed Email
-	| @return {String} - Returns a string to the vCard file for the users
-	*/
+	/**
+	 * Thus function returns thr url to the VCF file from the api
+	 * @param string $Hash The user hash
+	 * @return string The url to the VCF file
+	 * @since 1.0
+	 * @access private
+	 */
 	private function VCF($Hash){
 		$Url = 'http://www.gravatar.com/'.$Hash.'.vcf';
 		return $Url;
 	}
 	
-	/* A function to return an array
-	|
-	| @param {String}	$Hash - The Hashed Email
-	| @return {Array} - An array containing the user data
-	*/
+	/**
+	 * This function returns the data as a PHP std Object,
+	 * unserialized from the api
+	 * @param string $Hash The user/email hash
+	 * @return object|array The unserialized object or array
+	 */
 	private function PHP($Hash){
 		$str = file_get_contents( 'http://www.gravatar.com/'.$Hash.'.php' );
 		$profile = unserialize( $str );
 		return $profile;
 	}
 	
-	/* A function  to return a url to a QR for the user and a size parameter [s] is possible
-	|
-	| @param {String}	$Hash - The Hashed Email
-	| @return {String} - A url to the QR code
-	*/
+	/**
+	 * This function creates the url to the QR code, containing the api data
+	 * @param string $Hash The hash generated based on the email of the user
+	 * @return string The url to the QR code image
+	 * @since 1.0
+	 * @access private
+	 */
 	private function QR($Hash){
 		$Url = 'http://www.gravatar.com/'.$Hash.'.qr';
 		if(!is_null($this->Profile_Parameters) && array_key_exists('s',$this->Profile_Parameters)){
@@ -237,13 +270,15 @@ class Gravatar{
 		}
 		return $Return;
 	}
-	
-	/* A function to generate an image tag an optional with the following image parameters
-	|
-	| @param {String} $Url - The requested url for the image, the with the calculated md5 hash
-	| @param {String} $ImageParameters - An optinal parameter for Image Parameters
-	| @return {String} - Image tag with the input as src
-	*/
+
+	/**
+	 * This functon inserts the $Yrl to an image tag, with the specified attributes
+	 * @param string $Url             The generated image url
+	 * @param string $ImageParameters The html image attributes
+	 * @return string The html element as a string
+	 * @access private
+	 * @since 1.0
+	 */
 	private function Image_Tag($Url,$ImageParameters = NULL){
 		if(!is_null($ImageParameters)){
 			return '<img src="'.$Url.'" '.$ImageParameters.' />';
@@ -253,12 +288,14 @@ class Gravatar{
 		}
 	}
 	
-	/* A function to assembly the parameters string 
-	|
-	| @param {String}	$FileFormat - The wished Fileformat if the standard is not wanted
-	| @return {String}	$String - The assembled string of parameters
-	*/
-	private function Generate_Parameters($FileFormat = ''){
+	/**
+	 * This function assemblies the request url with the specified parameters
+	 * @param string $FileFormat The wished fileformat of the requested file
+	 * @return string The assemblied request url
+	 * @access private
+	 * @since 1.0
+	 */
+	private function Generate_Parameters($FileFormat = 'json'){
 		$String = '';
 		if($FileFormat != ''){
 			$String .= $FileFormat;
@@ -293,6 +330,14 @@ class Gravatar{
 	| @param {String}	$ImageParameters - A string of wished parameters for the image tag, like width an height an so {Optional}
 	| @return {String} - Returns a url with the wished parameters secure or not
 	*/
+	/**
+	 * [Image description]
+	 * @param [type] $Email           [description]
+	 * @param string $FileFormat      [description]
+	 * @param [type] $Secure          [description]
+	 * @param [type] $Parameters      [description]
+	 * @param [type] $ImageParameters [description]
+	 */
 	public function Image($Email = NULL,$FileFormat = '',$Secure = NULL,$Parameters = NULL,$ImageParameters = NULL){
 		if(!is_null($Email)){
 			$Hash = self::EmailHash($Email);
@@ -311,14 +356,16 @@ class Gravatar{
 		}
 	}
 	
-	/* The function to generate only the url to the image on gravatarn the only diffrence from Image is that this function only generates a url string
-	|
-	| @param {String}	$Email - The email of the requested user
-	| @param {String}	$FileFormat - The requested file format is not enough{Optional}
-	| @param {String}	$Secure - A parameter that if its true then secure mode will be turned{Optional}
-	| @param {Array}	$Paramters - An array of wished parameters if need options are the same as the Parameters function{Optional}
-	| @return {String} - The wished url for the image on Gravatar secrure or not and with the wished parameters for gravatar
-	*/
+	/**
+	 * This function returns the url to the image using normal or secure gravatar
+	 * @param string $Email      The users email
+	 * @param string $FileFormat The response file format
+	 * @param boolean $Secure     If the secure gravatar is going to be used
+	 * @param array $Parameters The specified parameters
+	 * @since 1.0
+	 * @access public
+	 * @return string The image url
+	 */
 	public function Image_Link($Email = NULL,$FileFormat = '',$Secure = NULL,$Parameters = NULL){
 		if(!is_null($Email)){
 			$Hash = self::EmailHash($Email);
@@ -327,7 +374,7 @@ class Gravatar{
 			}
 			if((isset($this->Parameters['d']) && $this->Parameters['d'] != '404') || !isset($this->Parameters['d'])){
 				$String = self::Generate_Parameters($FileFormat);
-				if(is_null($Secure) && $Secure != 'true'){
+				if(is_null($Secure) && $Secure !== true){
 					return 'http://www.gravatar.com/avatar/'.$Hash.$String;
 				}
 				else{
@@ -337,13 +384,15 @@ class Gravatar{
 		}
 	}
 
-	/* A function to set the Parameters easily 
-	|
-	| @param {String}	$d - Default Image
-	| @param {boolean}	$f - Force default
-	| @param {String}	$r - Rating options are (g,pg,r,x)
-	| @param {String}	$s - Size like 200
-	*/
+	/**
+	 * This function function is used to set the $Parameters array easily
+	 * @param string $d The default image provider
+	 * @param boolean $f If the image is going to be force the default provider
+	 * @param string $r The rating options, available options are (g,ph,r,x)
+	 * @param string $s The size of the image, it can be deffined like this 200 or 200x256
+	 * @since 1.0
+	 * @access public
+	 */
 	public function Parameters($d = NULL,$f = NULL,$r = NULL,$s = NULL){
 		if(!is_null($d)){
 			$this->Parameters["d"] = $d;
@@ -365,10 +414,13 @@ class Gravatar{
 		}
 	}
 	
-	/* A function to return the default Image providers/Generators
-	|
-	| @return {String}	$Return - An array of the available ImageProfiders for the $d parameter
-	*/
+	/**
+	 * This function the available default image providers/generators, this is also descriped in the
+	 * documentation.
+	 * @access public
+	 * @since 1.0
+	 * @return array
+	 */
 	public function DefaultImageProfiders(){
 		$Return = array(
 			'404',
