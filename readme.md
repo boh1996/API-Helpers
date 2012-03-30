@@ -1,4 +1,11 @@
 #Google Favicon Helper
+```
+//Create a new object of the service wrapper
+$Favicon = new Google_FavIcon_Service();
+
+//This function takes a parameter of the url, to get the fav icon of
+$Favicon->Favicon("http://illution.dk");
+```
 
 #goo.gl API Wrapper
 
