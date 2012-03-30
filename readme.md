@@ -19,6 +19,7 @@ $Favicon->Favicon("http://illution.dk");
 To use this api you need to have a Google API key,
 in this wrapper it can be deffined in the constructor or
 using the Api_Key() function
+
 ```
 $PageSpeed = new GooglePageSpeed("YOUR_API_KEY");
 
