@@ -16,6 +16,17 @@ $Favicon->Favicon("http://illution.dk");
 #Google Closure Compiler Helper
 
 #Google Page Speed API Wrapper
+To use this api you need to have a Google API key,
+in this wrapper it can be deffined in the constructor or
+using the Api_Key() function
+```
+$PageSpeed = new GooglePageSpeed("YOUR_API_KEY");
+
+//This function returns FALSE if it fails or a std Object if success containing the data
+//The only parameter it takes is the url to analyze
+$PageSpeed->PageSpeed("http://illution.dk");
+
+```
 
 #Masterbranch API Wrapper
 
