@@ -151,7 +151,7 @@
 		 * @since 1.0
 		 * @return string The placeholder image url
 		 */
-		public Placeholder(){
+		public function Placeholder(){
 			if(!is_null($this->Size)){
 				$Return = $Url.$this->Size;
 				if(!is_null($this->Color)){
