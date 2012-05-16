@@ -1,0 +1,942 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pl",
+				"player"
+			],
+			[
+				"field",
+				"fields"
+			],
+			[
+				"api",
+				"api_key"
+			],
+			[
+				"p",
+				"params"
+			],
+			[
+				"req",
+				"request_array"
+			],
+			[
+				"rq",
+				"request_string"
+			],
+			[
+				"sig",
+				"signature"
+			],
+			[
+				"B",
+				"Battlefield"
+			],
+			[
+				"sta",
+				"status"
+			],
+			[
+				"Battlefi",
+				"battlefield3"
+			],
+			[
+				"op",
+				"options"
+			],
+			[
+				"get",
+				"getstring"
+			],
+			[
+				"_A",
+				"_alternativeRequest"
+			],
+			[
+				"_a",
+				"_api_url"
+			],
+			[
+				"_s",
+				"_isCurlInstalled"
+			],
+			[
+				"_we",
+				"_webRequestCurl"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"user",
+				"user_email"
+			],
+			[
+				"questio",
+				"questionSwipe"
+			],
+			[
+				"butto",
+				"buttonGenerator"
+			],
+			[
+				"Cla",
+				"Class"
+			],
+			[
+				"Cl",
+				"Class"
+			],
+			[
+				"Co",
+				"Content"
+			],
+			[
+				"APi",
+				"Api_Request"
+			],
+			[
+				"Code",
+				"Code"
+			],
+			[
+				"Clas",
+				"Class_Name"
+			],
+			[
+				"Req",
+				"Request_Vars"
+			],
+			[
+				"Tar",
+				"TargetGroup"
+			],
+			[
+				"arrak",
+				"array_key_exists"
+			],
+			[
+				"Re",
+				"Request_Method"
+			],
+			[
+				"is_n",
+				"is_null"
+			],
+			[
+				"Api",
+				"Api_Request"
+			],
+			[
+				"Ap",
+				"Api_Request"
+			],
+			[
+				"API",
+				"Api_Request"
+			],
+			[
+				"stat",
+				"static	@static"
+			],
+			[
+				"Data",
+				"Database"
+			],
+			[
+				"Da",
+				"Database"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"Li",
+				"Link"
+			],
+			[
+				"Class",
+				"ClassProperty"
+			],
+			[
+				"Link",
+				"LinkData"
+			],
+			[
+				"Questi",
+				"Questions"
+			],
+			[
+				"_IO",
+				"_INTERNAL_LOAD_FROM_CLASS"
+			],
+			[
+				"_IN",
+				"_INTERNAL_LOAD_FROM_CLASS"
+			],
+			[
+				"Tem",
+				"Temp"
+			],
+			[
+				"_INT",
+				"_INTERNAL_DATABASE_MODEL"
+			],
+			[
+				"_INTER",
+				"_INTERNAL_DATABASE_MODEL"
+			],
+			[
+				"Inter",
+				"INTERNAL_"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"prper",
+				"property_exists"
+			],
+			[
+				"_ITNER",
+				"_INTERNAL_EXPORT_INGNORE"
+			],
+			[
+				"_",
+				"_INTERNAL_DATABASE_NAME_CONVERT"
+			],
+			[
+				"array_key",
+				"array_key_exists"
+			],
+			[
+				"get_",
+				"get_class"
+			],
+			[
+				"propert",
+				"property_exists"
+			],
+			[
+				"proper",
+				"property_exists"
+			],
+			[
+				"A",
+				"Array"
+			],
+			[
+				"In",
+				"Input"
+			],
+			[
+				"Mone",
+				"Monkey"
+			],
+			[
+				"button",
+				"button"
+			],
+			[
+				"im",
+				"!important  (value)"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"re",
+				"resizeButtons"
+			],
+			[
+				"is",
+				"isOnPage"
+			],
+			[
+				"padd",
+				"padding	padding-bottom: length"
+			],
+			[
+				"curr",
+				"currentPagePos"
+			],
+			[
+				"curren",
+				"currentPage"
+			],
+			[
+				"currentPage",
+				"currentPageElement"
+			],
+			[
+				"too",
+				"tooltip"
+			],
+			[
+				"po",
+				"pointer"
+			],
+			[
+				"curre",
+				"currentPage"
+			],
+			[
+				"success",
+				"successfully"
+			],
+			[
+				"addE",
+				"addNewElement"
+			],
+			[
+				"ser",
+				"searchProviders"
+			],
+			[
+				"dis",
+				"disabled"
+			],
+			[
+				"addlement",
+				"addElementSwipe"
+			],
+			[
+				"di",
+				"disbled"
+			],
+			[
+				"disabl",
+				"disable"
+			],
+			[
+				"addElem",
+				"addElementSwipe"
+			],
+			[
+				"start",
+				"startDisabled"
+			],
+			[
+				"provider",
+				"providerList"
+			],
+			[
+				"Arra",
+				"ArrayName"
+			],
+			[
+				"Pro",
+				"Providers"
+			],
+			[
+				"parse",
+				"parseJSON"
+			],
+			[
+				"addPage",
+				"addPageAfter"
+			],
+			[
+				"objec",
+				"objectIndex"
+			],
+			[
+				"me",
+				"message"
+			],
+			[
+				"titl",
+				"titleTag"
+			],
+			[
+				"set",
+				"setup"
+			],
+			[
+				"messa",
+				"messageContainer"
+			],
+			[
+				"current",
+				"currentObject"
+			],
+			[
+				"userPro",
+				"userProviders"
+			],
+			[
+				"userPR",
+				"userProviderKey"
+			],
+			[
+				"ret",
+				"returns	@returns"
+			],
+			[
+				"pageC",
+				"pageContent"
+			],
+			[
+				"off",
+				"offSet"
+			],
+			[
+				"numbe",
+				"numberOfPages"
+			],
+			[
+				"number",
+				"numberPerPage"
+			],
+			[
+				"num",
+				"numberOfPages"
+			],
+			[
+				"local",
+				"localStorage"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"pageE",
+				"pageElements"
+			],
+			[
+				"provder",
+				"providerElement"
+			],
+			[
+				"eleme",
+				"elementIndex"
+			],
+			[
+				"show",
+				"showStandardProviders"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"edit",
+				"editMode"
+			],
+			[
+				"about",
+				"aboutbox"
+			],
+			[
+				"ques",
+				"questionSwipe"
+			],
+			[
+				"back",
+				"background	background-color: hex"
+			],
+			[
+				"opa",
+				"opacity	opacity: [for Safari, FF & IE]"
+			],
+			[
+				"conta",
+				"containerTag"
+			],
+			[
+				"pa",
+				"param	@param"
+			],
+			[
+				"log",
+				"loginSwipe"
+			],
+			[
+				"de",
+				"deprecated	@deprecated"
+			],
+			[
+				"provi",
+				"providerContainer"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"last",
+				"lastElement"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"bo",
+				"border	border-color: color"
+			],
+			[
+				"fi",
+				"fileOverview	@fileOverview"
+			],
+			[
+				"ClickT",
+				"ClickThisPrototype"
+			],
+			[
+				"addCo",
+				"addColumn"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"e",
+				"example	@example"
+			],
+			[
+				"this",
+				"thisPage"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/xampp/htdocs/test.php",
+			"settings":
+			{
+				"buffer_size": 1020,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 311.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Disable Package"
+			],
+			[
+				"Packgage",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 132.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/R/API Helpers/bfbc2.php",
+		"/R/API Helpers/battlefield2.php",
+		"/R/API Helpers/crysis2.php",
+		"/R/API Helpers/battlefield3.php",
+		"/R/API Helpers/request_helpers.php",
+		"/C/xampp/htdocs/test.php",
+		"/R/API Helpers/medalofhonor.php",
+		"/R/API Helpers/masterbranch.php",
+		"/R/API Helpers/openexchangerates.php",
+		"/R/API Helpers/opensearch.php",
+		"/R/ClickThis/ClickThis Prototype/js/buttonGenerator.js",
+		"/R/ClickThis/ClickThis Prototype/js/seriesGenerator.js",
+		"/R/ClickThis/ClickThis Prototype/css/style.css",
+		"/R/ClickThis/ClickThis Prototype/test/style.css",
+		"/R/ClickThis/ClickThis Prototype/user.html",
+		"/R/ClickThis/ClickThis Prototype/js/clickthis.js",
+		"/R/ClickThis/ClickThis Prototype/js/script.js",
+		"/R/ClickThis/ClickThis Prototype/home.html",
+		"/R/ClickThis/ClickThis Prototype/user.php",
+		"/R/ClickThis/ClickThis Prototype/singlechoice.html",
+		"/R/ClickThis/ClickThis Prototype/js/user.js",
+		"/R/ClickThis/ClickThis/application/controllers/api.php",
+		"/R/ClickThis/ClickThis Prototype/buttons.html",
+		"/R/ClickThis/ClickThis Prototype/js/question.js",
+		"/R/ClickThis/ClickThis Prototype/sftp-config.json",
+		"/R/ClickThis/ClickThis Prototype/homejs.html",
+		"/R/ClickThis/ClickThis/application/libraries/api_request.php",
+		"/R/ClickThis/ClickThis/application/libraries/user.php",
+		"/R/ClickThis/ClickThis/application/libraries/std_library.php",
+		"/R/ClickThis/ClickThis/application/controllers/test.php",
+		"/R/ClickThis/ClickThis/application/libraries/didanswer.php",
+		"/R/ClickThis/ClickThis/application/libraries/series.php",
+		"/R/ClickThis/ClickThis/application/libraries/teacher.php",
+		"/R/ClickThis/ClickThis/application/models/std_model.php",
+		"/R/ClickThis/ClickThis/application/libraries/option.php",
+		"/R/ClickThis/ClickThis/application/libraries/question.php",
+		"/R/ClickThis/ClickThis Prototype/multiplechoice.html",
+		"/R/ClickThis/ClickThis/application/libraries/clickthis_security.php",
+		"/R/ClickThis/ClickThis/application/config/autoload.php",
+		"/R/ClickThis/ClickThis/application/models/model_user.php",
+		"/R/ClickThis/ClickThis/application/libraries/country.php",
+		"/R/ClickThis/ClickThis/application/libraries/pupil.php",
+		"/R/ClickThis/ClickThis/application/libraries/state.php",
+		"/R/ClickThis/ClickThis/application/libraries/answer.php",
+		"/R/ClickThis/ClickThis/application/libraries/group.php",
+		"/R/ClickThis/ClickThis/application/libraries/school.php",
+		"/R/ClickThis/ClickThis/application/libraries/topbarobject.php",
+		"/R/ClickThis/ClickThis/application/libraries/std_library.html",
+		"/C/Users/Bo/Desktop/PhpDocumentor-1.4.4/PhpDocumentor-1.4.4/PhpDocumentor-1.4.4/phpdoc.php",
+		"//BoNethard/BoDrev/Bo/Web Projects/CM/application/libraries/login_security.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/multiplechoice.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/bootstrap/css/bootstrap.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/buttonGenerator.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/form.js",
+		"//BoNethard/BoDrev/Bo/Web Projects/GoogleAPI/googlepagespeed.php",
+		"/C/Users/Bo/SVN/ClickThis/README.md",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis/application/libraries/answer.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis/application/libraries/dataconverter.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis/application/libraries/lang.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis/application/libraries/question.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis/application/controllers/admin.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/style.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/designer/style.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/designer/index.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/bootstrap/js/bootstrap.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/bootstrap/css/bootstrap-responsive.min.css",
+		"/C/Users/Bo/Desktop/bootstrap/bootstrap/js/bootstrap.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/buttons.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/offline.manifest",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/user.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/index.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/designer/style",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/designer/default.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/test/index.html",
+		"/C/Users/Bo/Desktop/index.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/designer/index.php",
+		"/C/Users/Bo/Desktop/default.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/designer/css/style.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/login.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/css/form.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/script.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/multiplechoice.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/clickthis.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/buttonResizer.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/form/index.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/form/css/form.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/form/js/form.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/question.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/form/css/buttons.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/form/js/multiplechoice.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/form/js/buttonGenerator.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/form/css/style.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/sftp-config.json",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/events.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/provider.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/script.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/settings.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/message.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/swipe.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/providers.php",
+		"/C/Users/Bo/Downloads/The Tourist/The Tourist.mp4",
+		"/C/xampp/htdocs/API/googlecalculator.php",
+		"//BoNethard/BoDrev/Bo/Web Projects/API/googleclosurecompiler.php",
+		"//BoNethard/BoDrev/Bo/Web Projects/API/googlecalculator.php",
+		"/C/xampp/htdocs/API/googleclosurecompiler.php",
+		"/C/Users/Bo/Desktop/test.html",
+		"/C/Users/Bo/Desktop/html5.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/home.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/settings.html",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/standardProviders.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/saveuserproviders.php",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/userproviders.php",
+		"/C/Users/Bo/Desktop/swipe.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/css/style.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/css/jqt/theme.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/css/multiplechoice.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/css/jqtouch.css",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/js/prefixfree.min.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/images/circle.png",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/provider.table.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/test/swipe.min.js",
+		"/C/Users/Bo/SVN/ClickThis/ClickThis Prototype/Ajax Queue/ajaxQueue.js",
+		"/C/Users/Bo/AppData/Roaming/Sublime Text 2/Packages/Tortoise/Default (Windows).sublime-keymap",
+		"/C/Users/Bo/AppData/Roaming/Sublime Text 2/Packages/Prefixr/Default (Windows).sublime-keymap",
+		"/C/Users/Bo/SVN/ClickThis/Documentation/buildPrototypeDocumentation.bat",
+		"/C/Users/Bo/AppData/Roaming/Sublime Text 2/Packages/SFTP/SFTP.sublime-settings",
+		"/C/Users/Bo/AppData/Roaming/Sublime Text 2/Packages/User/sftp_servers/illution",
+		"/C/Users/Bo/AppData/Roaming/Sublime Text 2/Packages/User/SFTP.errors.log"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"server",
+			"request_sting",
+			"\\n",
+			"players",
+			"about",
+			".\"&\"; ",
+			"')",
+			",0,",
+			"print_r",
+			"echo",
+			"$this->{$Name}",
+			"$User",
+			"INTERNAL_DATABASE_NAME_CONVERT",
+			"$this->CI->User->",
+			"model(\"User\")",
+			"_RemoveDatabaseData",
+			"CI",
+			"$User",
+			"CI",
+			"$CI",
+			"SetDataClass",
+			"$User",
+			"ClearDatabase",
+			"SerDataArray",
+			"SetDataArray",
+			"RemoveUserData",
+			"CheckData",
+			"RemoveDatabaseData",
+			"SetDataClass",
+			",$User->",
+			"$this->",
+			"self::CheckData(&1,&2);",
+			"@",
+			";",
+			" = ",
+			"		",
+			"\\n",
+			"		",
+			"\\n",
+			"close",
+			"0.25",
+			"460",
+			"5em",
+			"position(",
+			"changeBullet",
+			"changeBullet(",
+			"pageCount()",
+			"position(",
+			"provider.addBullet",
+			"addBullet",
+			"addBullets",
+			"position",
+			"currentPagePos",
+			"currentPage",
+			"span",
+			".tooltip",
+			"tooltip",
+			"selected",
+			".selected",
+			"#providerContainer li",
+			"li",
+			"#menuBar-remove-element",
+			"console",
+			"conso",
+			"sortable",
+			"this.callback",
+			"addElementContainer",
+			"auto",
+			"position",
+			"providerContainer",
+			"aboutText",
+			"128",
+			"$(document)",
+			"position-container",
+			"provider.addBullets",
+			"addBullets",
+			"addBullet",
+			"pageChangeType",
+			"numberPerRow",
+			"img/chevron.png",
+			"rounded",
+			"bullets",
+			"() {",
+			"loginSwipe",
+			"64",
+			"provider"
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\",\\n\"",
+			"',1,1)",
+			",1,1)",
+			",",
+			"$Data",
+			"$Class",
+			"_INTERNAL_DATABASE_NAME_CONVERT",
+			"$this->CI->Model_User->",
+			"model(\"Model_User\")",
+			"_CI",
+			"$Class",
+			"_CI",
+			"$_CI",
+			"_SetDataClass",
+			"$Group",
+			"_ClearDatabase",
+			"_SetDataArray",
+			"_RemoveUserData",
+			"_CheckData",
+			"_RemoveDatabaseData",
+			"_SetDataClass",
+			",$this->",
+			"$this->",
+			"$User->",
+			"self::CheckData(&2,&1);",
+			"",
+			");",
+			",",
+			"		self::CheckData(",
+			"\\nself::CheckData(",
+			"\\n		self::CheckData(",
+			"\\nself::CheckData(",
+			"self::CheckData(",
+			"0.69",
+			"provider.addBullets(",
+			"searchProviders",
+			"{size}",
+			"jqt/img/chevron.png",
+			"96"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/xampp/htdocs/test.php",
+					"settings":
+					{
+						"buffer_size": 1020,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1001,
+								1001
+							]
+						],
+						"settings":
+						{
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.sftp":
+	{
+		"height": 106.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 181.0,
+	"status_bar_visible": true
+}
