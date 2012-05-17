@@ -3,15 +3,26 @@
  * This function uses cURL to get data from a url
  * @param  string $url      The url to get data from
  * @param  string $postdata The post string to send
+ * @param array $headers An optional field for headers
  * @return object|boolean
  * @since 1.0
  * @access private
  */
-function webRequest($url,$postdata = NULL){
-	$ch = curl_init($url);
+function webRequest($url,$postdata = NULL,$get = false,$headers = NULL){
 	if(!is_null($postdata)){
+		if($get && strpos($url, "?") === false){
+			$url .= "?".$postdata;
+		} else {
+			$url .= $postdata;
+		}
+	}
+	$ch = curl_init($url);
+	if(!$get && !is_null($postdata)){
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+	}
+	if(!is_null($headers) && is_array($headers) && count($headers) > 0){
+		curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
 	}
 	curl_setopt($ch,CURLOPT_HEADER,false);
 	curl_setopt($ch,CURLOPT_USERAGENT,'BF3StatsAPI/0.1');
@@ -20,9 +31,16 @@ function webRequest($url,$postdata = NULL){
 	$raw = curl_exec($ch);
 	$statuscode = curl_getinfo($ch,CURLINFO_HTTP_CODE);
 	curl_close($ch);
-	$data = json_decode($raw);
-	if(is_null($data)){
+	if(strpos($raw, "<?xml") === false && substr($raw, 0, 1) != "<" ){
+		$data = json_decode($raw);
+	} else {
+		$data = simplexml_load_string($raw);
+		return $data;
+	}
+	if(is_null($data) && count($data) > 0){
 		return $raw;
+	} else if(is_null($data)){
+		return FALSE;
 	}
 	if($statuscode == 200){
 		return $data;
@@ -124,5 +142,83 @@ function crateSignedParams($data,$secret,&$string){
 	$return['sig'] = strtr(base64_encode(hash_hmac('sha256',$data,$secret,true)),$urlbase64);
 	$string = "data=".$data."&sig=".strtr(base64_encode(hash_hmac('sha256',$data,$secret,true)),$urlbase64);
 	return $return;
+}
+
+/**
+ * This function implodes a assoc array
+ * @param  string $delemiter The delemiter between the key and value
+ * @param string $element_delemiter The delemiter the different elements 
+ * @param  array $array     The array to implode
+ * @return string
+ * @since 1.0
+ */
+function assoc_implode($delemiter = "&",$element_delemiter = "=",$array = NULL){
+	if(!is_null($array) && !is_null($delemiter) && !is_null($element_delemiter)){
+		$return = "";
+		foreach ($array as $key => $value) {
+			$return .= $key . $delemiter . $value.$element_delemiter;
+		}
+		$return = rtrim($return,$element_delemiter);
+		return $return;
+	} else {
+		return "";
+	}
+}
+
+/**
+ * This function does a binary 
+ * hmac_sha1
+ * @param  string $key  The hmac password
+ * @param  string $data The data to encrypt
+ * @return string
+ * @since 1.0
+ */
+function hmacsha1($key,$data) {
+	    $blocksize=64;
+	    $hashfunc='sha1';
+	    if (strlen($key)>$blocksize)
+	        $key=pack('H*', $hashfunc($key));
+	    $key=str_pad($key,$blocksize,chr(0x00));
+	    $ipad=str_repeat(chr(0x36),$blocksize);
+	    $opad=str_repeat(chr(0x5c),$blocksize);
+	    $hmac = pack(
+	                'H*',$hashfunc(
+	                    ($key^$opad).pack(
+	                        'H*',$hashfunc(
+	                            ($key^$ipad).$data
+	                        )
+	                    )
+	                )
+	            );
+	    return $hmac;
+}
+/**
+ * This function encodes the url with the right encoding
+ * @param  string|array $input The string to encode
+ * @return string|array
+ */
+function urlencode_rfc3986($input) {
+    if (is_array($input)) {
+        return array_map(array($this, '_urlencode_rfc3986'), $input);
+    }
+    else if (is_scalar($input)) {
+        return str_replace('+',' ',str_replace('%7E', '~', rawurlencode($input)));
+    } else{
+        return '';
+    }
+}
+
+/**
+ * This function generates a auth header signature
+ * @param  string $url    The url to send too
+ * @param  string $verb   The HTTP verb
+ * @param  string $secret The secret key
+ * @return string
+ * @since 1.1
+ * @access private
+ */
+function signature($url,$verb,$secret){
+	$string = $verb + "\n" + date("r")+ "\n" + $url + "\n";
+	base64_encode( hmacsha1(urlencode_rfc3986($secret),$string));
 }
 ?>
