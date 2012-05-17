@@ -109,7 +109,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function __construct(){
+	public function __construct () {
 		$this->_webRequest = isCurlInstalled();
 	}
 
@@ -120,9 +120,9 @@ class Wow{
 	 * @since 1.0
 	 * @access private
 	 */
-	private function _build_url($resource,$params = NULL){
+	private function _build_url ($resource,$params = NULL) {
 		$url = $this->_regions[$this->region].$resource."?locale=".$this->locale;
-		if(!is_null($params) && is_array($params) && count($params) > 0){
+		if (!is_null($params) && is_array($params) && count($params) > 0) {
 			$url .= "&".assoc_implode("=","&",$params);
 		}
 		return $url;
@@ -135,8 +135,8 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function locale($locale){
-		if(!is_null($this->region) && in_array($locale, $this->_locales[$this->region])){
+	public function locale ($locale) {
+		if (!is_null($this->region) && in_array($locale, $this->_locales[$this->region])) {
 			$this->locale = $locale;
 			return TRUE;
 		} else {
@@ -151,8 +151,8 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function region($region){
-		if(in_array($region, $this->_regions)){
+	public function region ($region) {
+		if (in_array($region, $this->_regions)) {
 			$this->region = $region;
 			return TRUE;
 		} else {
@@ -167,7 +167,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function achivement($id){
+	public function achivement ($id) {
 		return self::_fetch("/api/wow/achievement/".$id);
 	}
 
@@ -179,13 +179,13 @@ class Wow{
 	 * @since 1.0
 	 * @access private
 	 */
-	private function _fields($fields,$table){
-		if(!is_array($table)){
+	private function _fields ($fields,$table) {
+		if (!is_array($table)) {
 			$available = $this->{$table};
 		} else {
 			$available = $table;
 		}
-		if(!is_array($table)){
+		if (!is_array($table)) {
 			return $fields;
 		}
 		foreach ($fields as $key => $field) {
@@ -205,10 +205,10 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function character($realm = NULL,$name = NULL,$fields = NULL){
-		if(!is_null($realm) && !is_null($user_name)){
+	public function character ($realm = NULL,$name = NULL,$fields = NULL) {
+		if (!is_null($realm) && !is_null($user_name)) {
 			$params = array();
-			if(!is_null($fields) && is_array($fields)){
+			if (!is_null($fields) && is_array($fields)) {
 				$params["fields"] = implode(",", self::_fields($fields,"_character_fields"));
 			}
 			return self::_fetch("/api/wow/achievement/".$realm."/".$name,$params);
@@ -226,9 +226,9 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function guild($realm,$guild_name,$fields = NULL){
+	public function guild ($realm,$guild_name,$fields = NULL) {
 		$params = array();
-		if(!is_null($fields) && is_array($fields)){
+		if (!is_null($fields) && is_array($fields)) {
 			$params["fields"] = implode(",", self::_fields($fields,array("members","achievements","news")));
 		}
 		return self::_fetch("/api/wow/achievement/".$realm."/".$guild_name,$params);
@@ -241,9 +241,9 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function realm($realms = NULL){
+	public function realm ($realms = NULL) {
 		$params = array();
-		if(!is_null($realms) && is_array($realms)){
+		if (!is_null($realms) && is_array($realms)) {
 			$params["realms"] = implode(",", $realms);
 		}
 		return self::_fetch("/api/wow/realm/status",$params);
@@ -256,7 +256,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function recipe($id){
+	public function recipe ($id) {
 		return self::_fetch("/api/wow/recipe/".$id);
 	}
 
@@ -267,7 +267,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function auctions($realm){
+	public function auctions ($realm) {
 		return self::_fetch("/api/wow/auction/data/".$realm);
 	}
 
@@ -279,14 +279,14 @@ class Wow{
 	 * @since 1.0
 	 * @access private
 	 */
-	private function _fetch($url,$params = NULL){
+	private function _fetch ($url,$params = NULL) {
 		$url = self::_build_url($url,$params);
 		$headers = array();
-		if(!is_null($this->application_secret) && !is_null($this->application_public)){
+		if (!is_null($this->application_secret) && !is_null($this->application_public)) {
 			$headers[] = "Authorization: BNET ".$this->application_public.":".signature($url,"GET",$this->application_secret);
 		}
 		$data = ($this->_webRequest)? webRequest($url,NULL,true,$headers) : alternativeRequest($url);
-		if(!is_null($data) && $data !== false && (!isset($data->status))){
+		if (!is_null($data) && $data !== false && (!isset($data->status))) {
 			return $data;
 		} else {
 			return FALSE;
@@ -300,7 +300,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function item($id){
+	public function item ($id) {
 		return self::_fetch("/api/wow/item/".$id);
 	}	
 
@@ -311,7 +311,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function item_set($id){
+	public function item_set ($id) {
 		return self::_fetch("/api/wow/item/set/".$id);
 	}
 
@@ -324,7 +324,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function arena_team($realm,$team_size = NULL,$team_name){
+	public function arena_team ($realm,$team_size = NULL,$team_name) {
 		return self::_fetch("/api/wow/arena/".$realm."/".$team_size."/".$team_name);
 	}
 
@@ -338,7 +338,7 @@ class Wow{
 	 * "asc" if the results are going to be sorted in ascending order, true means yes and default is true
 	 * @return boolean|object
 	 */
-	public function arena_ladder($battlegroup,$team_size,$params = NULL){
+	public function arena_ladder ($battlegroup,$team_size,$params = NULL) {
 		return self::_fetch("/api/wow/pvp/arena/".$battlegroup."/".$team_size,$params);
 	}
 
@@ -350,7 +350,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function rated_battleground_ladder($params){
+	public function rated_battleground_ladder ($params) {
 		return self::_fetch("/api/wow/pvp/ratedbg/ladder",$params);
 	}
 
@@ -361,7 +361,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function quest($id){
+	public function quest ($id) {
 		return self::_fetch("/api/wow/quest/".$id);
 	}
 
@@ -371,7 +371,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function battlegroups(){
+	public function battlegroups () {
 		return self::_fetch("/api/wow/data/battlegroups/");
 	}
 
@@ -381,7 +381,7 @@ class Wow{
 	 * @access public
 	 * @return boolean|object
 	 */
-	public function character_races(){
+	public function character_races () {
 		return self::_fetch("/api/wow/data/character/races");
 	}
 
@@ -391,7 +391,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function character_classes(){
+	public function character_classes () {
 		return self::_fetch("/api/wow/data/character/classes");
 	}
 
@@ -402,7 +402,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function character_achievements(){
+	public function character_achievements () {
 		return self::_fetch("/api/wow/data/character/achievements");
 	}
 
@@ -412,7 +412,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function guild_rewards(){
+	public function guild_rewards () {
 		return self::_fetch("/api/wow/data/guild/rewards");
 	}
 
@@ -422,7 +422,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function guild_perks(){
+	public function guild_perks () {
 		return self::_fetch("/api/wow/data/guild/perks");
 	}
 
@@ -433,7 +433,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function guild_achievements(){
+	public function guild_achievements () {
 		return self::_fetch("/api/wow/data/guild/achievements");
 	}
 
@@ -443,7 +443,7 @@ class Wow{
 	 * @since 1.0
 	 * @access public
 	 */
-	public function item_classes(){
+	public function item_classes () {
 		return self::_fetch("/api/wow/data/item/classes");
 	}
 }
