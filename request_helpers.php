@@ -119,12 +119,12 @@ function isCurlInstalled () {
  * @access private
  */
 function alternativeRequest ( $url, $getstring = NULL ) {
-	if(!is_null($getstring)){
+	if (!is_null($getstring)) {
 		$url = $url.$getstring;
 	}
 	$data = file_get_contents($url);
 	$data = json_decode($data);
-	if(!is_null($data)){
+	if (!is_null($data)) {
 		return $data;
 	} else {
 		return FALSE;
