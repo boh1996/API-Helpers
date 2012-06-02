@@ -36,6 +36,7 @@ function webRequest ( $url, $postdata = NULL, $get = false, $headers = NULL ) {
 	curl_setopt($ch,CURLOPT_USERAGENT,'BF3StatsAPI/0.1');
 	curl_setopt($ch,CURLOPT_HTTPHEADER,array('Expect:'));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
 	//Execute and get content
 	$raw = curl_exec($ch);
@@ -43,11 +44,14 @@ function webRequest ( $url, $postdata = NULL, $get = false, $headers = NULL ) {
 	curl_close($ch);
 
 	//If XML convert using SimpleXML else use json decode
-	if(strpos($raw, "<?xml") === false && substr($raw, 0, 1) != "<" ){
-		$data = json_decode($raw);
-	} else {
+	if ($raw[0].$raw[1] == "a:") {
+		$data = unserialize($raw);
+		return $data;
+	} else if(strpos($raw, "<?xml") !== false) {
 		$data = simplexml_load_string($raw);
 		return $data;
+	} else {
+		$data = json_decode($raw);
 	}
 
 	//If the conversion was a failure return the raw data else return FALSE
@@ -122,8 +126,15 @@ function alternativeRequest ( $url, $getstring = NULL ) {
 	if (!is_null($getstring)) {
 		$url = $url.$getstring;
 	}
-	$data = file_get_contents($url);
-	$data = json_decode($data);
+	$raw = file_get_contents($url);
+	if ($raw[0].$raw[1] == "a:") {
+		$data = unserialize($raw);
+	} else if(strpos($raw, "<?xml") !== false) {
+		$data = simplexml_load_string($raw);
+	} else {
+		$data = json_decode($raw);
+	}
+
 	if (!is_null($data)) {
 		return $data;
 	} else {

@@ -1,133 +1,172 @@
 <?php
+include "request_helpers.php";
 /**
- * @name		Xbox Leaders, Xbox Live API Helper
- * @author		Bo Thomsen <bo@illution.dk>
- * @company		Illution
+ * This API Wrapper is used to query the Unoffical Xbox Live API
+ * @package		Unofficial Xbox Live API Wrapper
+ * @author 		Bo Thomsen <bo@illution.dk>
  * @version 	1.0
- * @link		http://illution.dk
+ * @category Gaming
+ * @package API Wrappers
+ * @subpackage Xbox Live
+ * @link 		https://illution.dk
  * @license		MIT License
- * @date		19/12-2011
- * @category	Xbox Live API
- * @package 	Data API's
- * @subpackage	Xbox Live Data API
+ * @see 		https://xboxapi.com/documentation
  */
-
 class XboxLive{
+		
+	/**
+	 * The url to the Xbox API
+	 * @since 1.0
+	 * @access public
+	 * @var string
+	 */
+	public $api_url = "https://xboxapi.com/";
 
-	/* User Data */
-	private $Gamer_Tag = NULL; //The variable storing the Gamer Tag
-	private $Format = NULL; //The output format
-	
-	/* Internals */
-	private $Api_Url = 'http://api.xboxleaders.com/v2/'; //The API url
-	private $Formats = array('xml','json'); //The avalable formats for the API
-	
-	/** 
-	* The constructor
-	* @access public
-	*/
-	public function XboxLive(){
+	/**
+	 * When peforming a request, the api returns the api limit
+	 * and this object will contain two properties:
+	 * usage: The current usage
+	 * limit: The maximum limit
+	 * @var object
+	 */
+	public $limit = NULL;
+
+	/**
+	 * If this is true cURL is used else if file_get_contents used
+	 * @since 1.0
+	 * @access private
+	 */
+	private $_webRequest = FALSE;
+
+	/**
+	 * This function is the constructor
+	 * @since 1.0
+	 * @access public
+	 */
+	public function __construct () {
+		$this->_webRequest = isCurlInstalled();
+	}
+
+	/**
+	 * This function is used to get all games of a specific player
+	 * @param  string $player The player to search for
+	 * @return object|boolean
+	 * @since 1.0
+	 * @access public
+	 */
+	public function games ( $player ) {
+		$url = $this->api_url."json/games/".urlencode($player);
+		$object = self::_request($url);
+		if(!is_object($object) || $object->Success != 1){
+			return FALSE;
+		}
+		foreach ($object->Games as $key => &$game) {
+			if(isset($game->Progress->LastPlayed)){
+				$game->Progress->LastPlayed = str_replace("/Date(", "", str_replace(")/", "", $game->Progress->LastPlayed));
+			}
+		}
+		return $object;
+	}
+
+	/**
+	 * This function is used to get friends of a player
+	 * @param  string $player The gamer tag of the player
+	 * @return object|boolean
+	 * @since 1.0
+	 * @access public
+	 */
+	public function friends ( $player ) {
+		$url = $this->api_url."/json/friends/".urlencode($player);
+		$object = self::_request($url);
+		if(!is_object($object) || ($object->Success != 1 && $object->Success != false)){
+			return FALSE;
+		}
+		foreach ($object->Friends as $key => &$friend) {
+			if(isset($friend->LastSeen)){
+				$friend->LastSeen = str_replace("/Date(", "", str_replace(")/", "", $friend->LastSeen));
+			}
+		}
+		return $object;
 		
 	}
-	
-	/** 
-	* This functions set the internal GamerTag variable
-	* @param {String}	$GamerTag - The Xbox Live gamertag of the users you wish to get the data of
-	* @return {Boolean]	- Returns true if this function succeded
-	* @access public
-	*/
-	public function Set_Gamer_Tag($GamerTag = NULL){
-		if(!is_null($GamerTag)){
-			$this->Gamer_Tag = $GamerTag;
-			return true;
-		}
-		else{
-			return false;	
-		}
-	}
-	
+
 	/**
-	* This function is used to set the output format
-	* @param {String}	$Format - The requested return format
-	* @return {Boolean}	- Returns true if succeded and false if failed
-	* @access public
-	*/
-	public function Set_Format($Format = NULL){
-		if(!is_null($Format)){
-			if(in_array($Format,$this->Formats)){
-				$this->Format = $Format;
-				return true;	
-			}
+	 * This function is used to get profile information of a player
+	 * @param  string $player The players gamer tag
+	 * @return boolean|object
+	 * @since 1.0
+	 * @access public
+	 */
+	public function profile ( $player ) {
+		$url = $this->api_url."/json/profile/".urlencode($player);
+		$object = self::_request($url);
+		if(!is_object($object) || ($object->Success != 1 && $object->Success != false)){
+			return FALSE;
 		}
-		else{
-			return false;	
-		}
+		return $object;
 	}
 
-	/** 
-	* This function is optinal and is only needed if you wan't to overrule the existing api url
-	* @param {String}	$Api_Url - The new url to the API
-	* @return {Boolean}	- Returns a boolean succeded or failed
-	* @access public
-	*/	
-	public function Set_Api_Url($Api_Url = NULL){
-		if(!is_null($Api_Url)){
-			$this->Api_Url = $Api_Url;
-			return true;
-		}
-		else{
-			return false;	
-		}
-	}
 	/**
-	* This function returns the user data of the specified gamer in the specified format
-	* @param {String}	$Format - The return format of the data 'xml' or json
-	* @param {String}	$GamerTag - The Xbox Live gamer tag of the user
-	* @param {Boolean}	$ToArray - Normally set to true if set to false, then the data will be left as raw json data
-	* @return {Array} or {Object}	- Returns a json object if the format is set to json and ToArray is false else it returns a Array of the user data or if format is xml an 	
-	* Simple XML object is returned
-	* @access public
-	*/
-	public function Get_Data($Format = NULL,$GamerTag = NULL,$ToArray = true){
-		self::Set_Gamer_Tag($GamerTag);
-		if(self::Set_Format($Format)&&!is_null($this->Gamer_Tag)){
-			$Url = $this->Api_Url.'?format='.$this->Format.'&gamertag='.$this->Gamer_Tag;
-			$User_Data = file_get_contents($Url);
-			if($Format == 'json'){
-				return json_decode($User_Data,$ToArray);
-			}
-			else{
-				return simplexml_load_string($User_Data);	 
+	 * This function is used to get acgievements for a game and what achievements a palyer has earned
+	 * @param  string $player The players gamer tag
+	 * @param  string $game   The game id
+	 * @return boolean|object
+	 */
+	public function achievements ( $player, $game) {
+		$url = $this->api_url."/json/achievements/".$game."/".urlencode($player);
+		$object = self::_request($url);
+		if(!is_object($object) || ($object->Success != 1 && $object->Success != false)){
+			return FALSE;
+		}
+		if(isset($object->Game->Progress->LastPlayed)){
+				$object->Game->Progress->LastPlayed = str_replace("/Date(", "", str_replace(")/", "", $object->Game->Progress->LastPlayed));
+		}
+		foreach ($object->Achievements as $key => &$achievement) {
+			if(isset($achievement->EarnedOn)){
+				$achievement->EarnedOn = str_replace("/Date(", "", str_replace(")/", "", $achievement->EarnedOn));
 			}
 		}
-		else{
-			return false;	
-		}
+		return $object;
 	}
-	
-	/** 
-	* This function returns the box art off the xbox game specified as a decimal in $TID
-	* @param {Int}	$TID - The game id of the xbox game, taken from the xbox market place
-	* @param {String}	$Size - The size of the box art 'small' or 'large'
-	* @return {Boolean}|{String}	- This function returns false if failed and the url to the box art if succeded, but be aware this function doesn't check if the box art 
-	* exists.
-	* @access public
-	*/
-	public function GetBoxArt($TID = NULL,$Size = 'large'){
-		if(!is_null($TID)){
-			$GameHex = dechex($TID);
-			switch($Size){
-				case "large":
-					return 'http://tiles.xbox.com/consoleAssets/'.$GameHex.'/en-US/largeboxart.jpg';
-				break;
-				
-				case "small":
-					return 'http://tiles.xbox.com/consoleAssets/'.$GameHex.'/en-US/smallboxart.jpg';
-				break;
-			}
+
+	/**
+	 * This function performs the request
+	 * @since 1.0
+	 * @access private
+	 * @param  string $url The request url
+	 * @return object|boolean
+	 */
+	private function _request ( $url ) {
+		if($this->_webRequest) {
+			$object  = webRequest($url);
+		} else {
+			$object = alternativeRequest($url);
 		}
-		else{
-			return false;	
+		if(!is_object($object)){
+			return FALSE;
+		}
+		$limit = explode("/", $object->API_Limit);
+		$this->limit = (object)array("usage" => $limit[0],"limit" => $limit[1]);
+		return $object;
+	}
+
+	/**
+	 * This function returns a url to the box art image of the requsted game
+	 * @param  string $tid  The Xbox Game id
+	 * @param  string $size The size of the image small or large
+	 * @param boolean $data_url If this is set to true then a data url is returned
+	 * @return string
+	 * @access public
+	 * @since 1.0
+	 */
+	public function get_box_art ($tid, $size = 'large', $data_url = false) {
+		$game_hex = dechex($tid);
+		$url = 'https://live.xbox.com/consoleAssets/'.$game_hex.'/en-US/'.$size.'boxart.jpg';
+		if ($data_url) {
+			$image = file_get_contents($url);
+			return "data:image/jpeg;base64,".base64_encode($image);
+		} else {
+			return $url;
 		}
 	}
 }
