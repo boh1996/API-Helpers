@@ -2,7 +2,7 @@
 /**
  * This class is used to get data from PR Spy
  * @author Illution <support@illution.dk>
- * @license http://illution.dk/copyright Copyrights Illution © 2012, All rights reserved
+ * @license https://illution.dk/copyright Copyrights Illution © 2012, All rights reserved
  * @package Project Reality Mod
  * @category Project Reality Mod
  * @subpackage PR Spy
